@@ -35,7 +35,7 @@ def hungerSystemThread():
 	while True:
 		time.sleep(5)
 		hunger = hunger - 33
-		input("\nYOU HAVE LOST SOME OF YOUR HUNGER\n>")
+		print("\nYOU HAVE LOST SOME OF YOUR HUNGER\n>")
 
 
 
