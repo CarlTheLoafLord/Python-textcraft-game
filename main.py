@@ -4,7 +4,7 @@ import random
 import threading
 
 #tools = ['WOOD SWORD': 0, 'WOOD PICKAXE': 0, 'WOOD SHOVEL:': 0]
-things = {'PLANKS': 100, 'STICKS': 0, 'COBBLESTONE': 0,'WOOD SWORD': 0, 'IRON ORE': 1, 'GOLD ORE': 1, 'WOOD PICKAXE': 0, 'WOOD SHOVEL': 0, "DIAMONDS": 0, "IRON": 0, "COAL": 0,"GOLD": 0, "DIAMOND SWORD": 0, 'DIAMOND PICK': 0, 'DIAMOND AXE': 0, 'DIAMOND SHOVEL': 0, "IRON SWORD": 0, 'IRON PICK': 0, 'IRON AXE': 0, 'IRON SHOVEL': 0, "STONE SWORD": 0, 'STONE PICK': 0, 'STONE AXE': 0, 'STONE SHOVEL': 0,}
+things = {'PLANKS': 64, 'STICKS': 64, 'COBBLESTONE': 64,'WOOD SWORD': 0, 'IRON ORE': 1, 'GOLD ORE': 1, 'WOOD PICKAXE': 0, 'WOOD SHOVEL': 0, "DIAMONDS": 0, "IRON": 0, "COAL": 0,"GOLD": 0, "DIAMOND SWORD": 0, 'DIAMOND PICK': 0, 'DIAMOND AXE': 0, 'DIAMOND SHOVEL': 0, "IRON SWORD": 0, 'IRON PICK': 0, 'IRON AXE': 0, 'IRON SHOVEL': 0, "STONE SWORD": 0, 'STONE PICK': 0, 'STONE AXE': 0, 'STONE SHOVEL': 0,}
 #craftingmaterials = ['COBBLESTONE', 'WOOD LOGS', 'STICKS','PLANKS']
 biomes = ['GRASSLAND', 'MOUNTAINS', 'DESERT', 'ICE', 'BEACH', 'DARK OAK FOREST']
 monsters = {'ZOMBIE': 3, 'SKELETON': 3, 'SPIDER': 3, 'CREEPER': 6}
@@ -15,14 +15,15 @@ health = 100
 night = False
 hunger = 100
 
+"""
 def dayTimeThread():
 	global night
 	while True:
-		time.sleep(300)
+		time.sleep(3)
 		night = True
 		print("\nIT HAS TURNED NIGHT!")
 		ifhealthlessthan50()
-		time.sleep(300)
+		time.sleep(3)
 		night = False
 		input("\nIT HAS TURNED DAY!\n>")
 
@@ -38,7 +39,15 @@ def hungerSystemThread():
 		print("\nYOU HAVE LOST SOME OF YOUR HUNGER\n>")
 
 
+timeThread = threading.Thread(target = dayTimeThread)
+timeThread.daemon = True
+timeThread.start()
 
+
+timeThread = threading.Thread(target = hungerSystemThread)
+timeThread.daemon = True
+timeThread.start()
+"""
 
 
 print("WELCOME TO TEXTCRAFT")
@@ -69,14 +78,6 @@ intro()
 
 
 
-timeThread = threading.Thread(target = dayTimeThread)
-timeThread.daemon = True
-timeThread.start()
-
-
-timeThread = threading.Thread(target = hungerSystemThread)
-timeThread.daemon = True
-timeThread.start()
 
 def ifhealthlessthan50():
 
